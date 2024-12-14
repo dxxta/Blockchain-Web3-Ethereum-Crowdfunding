@@ -1,0 +1,19 @@
+{
+  "scripts": {
+    "deploy:ignition": "npx hardhat ignition deploy ./ignition/modules/EventFunding.ts --network localhost",
+    "deploy:production": "npx hardhat run scripts/deploy.ts --network sepolia",
+    "deploy:dev": "npm run compile && npx hardhat run scripts/deploy.ts --network localhost",
+    "clean": "npx hardhat clean",
+    "simulator": "npx hardhat node",
+    "compile": "npx hardhat compile"
+  },
+  "dependencies": {
+    "@alch/alchemy-web3": "^1.4.7",
+    "dotenv": "^16.4.5",
+    "hardhat": "^2.22.16"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-ignition-ethers": "^0.15.7",
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0"
+  }
+}

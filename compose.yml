@@ -1,0 +1,35 @@
+services:
+  ipfs:
+    image: ipfs/kubo:latest
+    container_name: ipfs_host
+    volumes:
+      - ipfs_staging:/export
+      - ipfs_data:/data/ipfs
+    ports:
+      - "4001:4001" # P2P TCP transport
+      - "5001:5001" # IPFS API
+      - "8080:8080" # IPFS Gateway
+    restart: unless-stopped
+    networks:
+      - ipfs_network
+  backend:
+    build: ./backend
+    ports:
+      - "8545:8545" # API
+    env_file: "./backend/.env"
+    restart: unless-stopped
+    networks:
+      - ipfs_network
+  frontend:
+    build: ./frontend
+    restart: unless-stopped
+    networks:
+      - ipfs_network
+    ports:
+      - 3000:5000
+volumes:
+  ipfs_staging:
+  ipfs_data:
+networks:
+  ipfs_network:
+    driver: bridge
