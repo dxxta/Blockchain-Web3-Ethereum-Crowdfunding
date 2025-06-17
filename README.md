@@ -7,7 +7,7 @@ If you are developing a production application, we recommend you to:
 
 > Journal
 
-- [paper](preview/paper.pdf)
+- [Unreleased Paper](preview/paper.pdf)
 
 ## Architecture
 
